@@ -1,32 +1,39 @@
-# Prerequisites
-*.d
+# C++ objects and libs
 
-# Compiled Object files
 *.slo
 *.lo
 *.o
-*.obj
-
-# Precompiled Headers
-*.gch
-*.pch
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
 *.a
-*.lib
+*.la
+*.lai
+*.so
+*.dll
+*.dylib
+*.DS_Store
+# Qt-es
 
-# Executables
-*.exe
-*.out
-*.app
+/.qmake.cache
+/.qmake.stash
+*.pro.user
+*.pro.user.*
+*.qbs.user
+*.qbs.user.*
+*.moc
+moc_*.cpp
+qrc_*.cpp
+ui_*.h
+Makefile*
+*-build-*
+
+build/
+bin/
+libs/
+*.user
+
+# QtCreator
+
+*.autosave
+
+#QtCtreator Qml
+*.qmlproject.user
+*.qmlproject.user.*
