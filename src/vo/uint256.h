@@ -77,6 +77,48 @@ public:
     void unSerialize(Stream& s) { s.read((char*)data,sizeof(data)); }
 };
 
+/** 160-bit opaque blob.
+ * @note This type is called uint160 for historical reasons only. It is an opaque
+ * blob of 160 bits and has no integer operations.
+ */
+class Uint160 : public UintBase<160> {
+public:
+    Uint160() {}
+    explicit Uint160(const std::vector<unsigned char>& vch) : UintBase<160>(vch) {}
+};
+
+/** 256-bit opaque blob.
+ * @note This type is called uint256 for historical reasons only. It is an
+ * opaque blob of 256 bits and has no integer operations. Use arith_uint256 if
+ * those are required.
+ */
+class Uint256 : public UintBase<256> {
+public:
+    Uint256() {}
+    explicit Uint256(const std::vector<unsigned char>& vch) : UintBase<256>(vch) {}
+};
+
+/* uint256 from const char *.
+ * This is a separate function because the constructor uint256(const char*) can result
+ * in dangerously catching uint256(0).
+ */
+inline Uint256 uint256S(const char *str)
+{
+    Uint256 rv;
+    rv.setHex(str);
+    return rv;
+}
+/* uint256 from std::string.
+ * This is a separate function because the constructor uint256(const std::string &str) can result
+ * in dangerously catching uint256(0) via std::string(const char*).
+ */
+inline Uint256 uint256S(const std::string& str)
+{
+    Uint256 rv;
+    rv.setHex(str);
+    return rv;
+}
+
 #endif // UINTBASE_H
 
 

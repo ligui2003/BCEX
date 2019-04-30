@@ -31,10 +31,10 @@ ENDIF(WIN32)
 
 
 add_executable(${PROJECT_NAME} "main.cpp"
-                "vo/uintbase.cpp"
+                "vo/uint256.cpp"             
                 "util/strencodings.cpp"
 
-                "vo/uintbase.h"
+                "vo/uint256.h"              
                 "util/strencodings.h"
     )
 

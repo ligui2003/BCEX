@@ -1,9 +1,7 @@
 ﻿#include <iostream>
 
-using namespace std;
-
 int main()
 {
-    cout << "Hello BCEX!" << endl;
+    std::cout << "Hello BCEX!" << std::endl;
     return 0;
 }
