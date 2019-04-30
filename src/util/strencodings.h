@@ -11,6 +11,7 @@
 #include <string>
 #include <vector>
 
+// 转成16进制字符串
 template<typename T>
 std::string HexStr(const T itbegin,const T itend)
 {
@@ -35,7 +36,25 @@ inline std::string HexStr(const T& vch)
     return HexStr(vch.begin(),vch.end());
 }
 
+// 是否是数字
+constexpr bool IsDigit(char c)
+{
+    return c >= '0' && c <= '9';
+}
 
+// 判断空格
+constexpr inline bool IsSpace(char c) noexcept
+{
+    return c == ' ' || c == '\f' || c == '\n' || c == '\r' || c == '\t' || c == '\v';
+}
+
+// 字符转小写
+constexpr char ToLower(char c)
+{
+    return (c >= 'A' && c <= 'Z' ? (c - 'A') + 'a' : c);
+}
+
+uint8_t HexDigit(char c);
 
 
 #endif // STRENCODINGS_H

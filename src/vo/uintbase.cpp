@@ -19,3 +19,21 @@ std::string UintBase<BITS>::getHex() const
     // 反向迭代器
     return HexStr(std::reverse_iterator<const uint8_t*>(data + sizeof(data)), std::reverse_iterator<const uint8_t*>(data));
 }
+
+template<uint32_t BITS>
+void UintBase<BITS>::setHex(const char* psz)
+{
+    memset(data,0,sizeof(data));
+
+    // skip leading spaces
+    while(IsSpace(*psz))
+        psz++;
+
+    // skip 0x
+    if(psz[0] == '0' && ToLower(psz[1]) == 'x')
+        psz += 2;
+
+    // hex string to uint
+    const char* pbegin = psz;
+    while()
+}
