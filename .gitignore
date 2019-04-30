@@ -27,7 +27,6 @@ Makefile*
 
 build/
 bin/
-libs/
 .vscode/
 *.user
 
