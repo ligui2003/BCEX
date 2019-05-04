@@ -9,6 +9,10 @@ include_directories(
 
 link_directories("${PROJECT_SOURCE_DIR}/../libs/")
 
+configure_file(
+    "${PROJECT_SOURCE_DIR}/config/bcex_config.h.in"
+    "${PROJECT_SOURCE_DIR}/config/bcex_config.h"
+    )
 
 
 IF( WIN32 )
@@ -33,9 +37,20 @@ ENDIF(WIN32)
 add_executable(${PROJECT_NAME} "main.cpp"
                 "vo/uint256.cpp"             
                 "util/strencodings.cpp"
+                "crypto/sha1.h"
+                "crypto/common.h"
+                "compat/byteswap.h"
+                "compat/endian.h"
+
+
+                "config/bcex_config.h"
+
 
                 "vo/uint256.h"              
                 "util/strencodings.h"
+                "crypto/sha1.cpp"
+
+                "../include/secp256k1/secp256k1.h"
     )
 
 IF( WIN32 )
