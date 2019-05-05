@@ -17,6 +17,10 @@ configure_file(
 
 IF( WIN32 )
     message( STATUS "bcex on Windows" )
+
+    include_directories("C:/code/include/")
+    link_directories("C:/code/libs")
+
     link_libraries(libsecp256k1)
 ELSE(WIN32)
     link_libraries(secp256k1)
@@ -41,7 +45,7 @@ add_executable(${PROJECT_NAME} "main.cpp"
                 "crypto/common.h"
                 "compat/byteswap.h"
                 "compat/endian.h"
-
+                "test/crypto_test.hpp"
 
                 "config/bcex_config.h"
 

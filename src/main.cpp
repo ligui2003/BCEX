@@ -4,6 +4,7 @@
 
 #include "crypto/sha1.h"
 #include "util/strencodings.h"
+#include "test/crypto_test.hpp"
 
 int main()
 {
