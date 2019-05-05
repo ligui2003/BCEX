@@ -7,7 +7,7 @@ include_directories(
                     "${PROJECT_SOURCE_DIR}/../include/"
                    )
 
-link_directories("${PROJECT_SOURCE_DIR}/../libs/")
+link_directories("${PROJECT_SOURCE_DIR}/../libs/debug/")
 
 configure_file(
     "${PROJECT_SOURCE_DIR}/config/bcex_config.h.in"
@@ -21,7 +21,9 @@ IF( WIN32 )
     include_directories("C:/code/include/")
     link_directories("C:/code/libs")
 
-    link_libraries(libsecp256k1)
+    link_libraries( libsecp256k1
+                    gmockd
+                    gtestd)
 ELSE(WIN32)
     link_libraries(secp256k1)
 
@@ -45,7 +47,7 @@ add_executable(${PROJECT_NAME} "main.cpp"
                 "crypto/common.h"
                 "compat/byteswap.h"
                 "compat/endian.h"
-                "test/crypto_test.hpp"
+                "test/crypto_test.cpp"
 
                 "config/bcex_config.h"
 
