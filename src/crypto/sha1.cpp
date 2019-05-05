@@ -4,6 +4,7 @@
 
 #include "crypto/sha1.h"
 #include "crypto/common.h"
+#include "util/strencodings.h"
 
 #include <string.h>
 
@@ -192,3 +193,13 @@ CSHA1& CSHA1::Reset()
     sha1::Initialize(s);
     return *this;
 }
+
+std::string CSHA1::ToString()
+{
+    if(bytes <= 0) return "";
+
+    unsigned char hash[CSHA1::OUTPUT_SIZE] = {};
+    Finalize(hash);
+    return HexStr(hash,hash + CSHA1::OUTPUT_SIZE);
+}
+
