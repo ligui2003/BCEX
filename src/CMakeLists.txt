@@ -2,6 +2,7 @@
 
 project(bcex)
 
+
 include_directories(
                     ${PROJECT_SOURCE_DIR}
                     "${PROJECT_SOURCE_DIR}/../include/"
@@ -45,6 +46,13 @@ add_executable(${PROJECT_NAME} "main.cpp"
                 "util/strencodings.cpp"
                 "crypto/sha1.cpp"
                 "crypto/sha256.cpp"
+                "crypto/sha512.cpp"
+                "crypto/sha256_avx2.cpp"
+                "crypto/sha256_shani.cpp"
+                "crypto/sha256_sse4.cpp"
+                "crypto/sha256_sse41.cpp"
+                "crypto/hmac_sha256.cpp"
+                "crypto/siphash.cpp"
                 "crypto/ctaes/ctaes.c"
                 "crypto/aes.cpp"
                 "test/crypto_test.cpp"
@@ -54,10 +62,14 @@ add_executable(${PROJECT_NAME} "main.cpp"
 
                 "vo/uint256.h"              
                 "util/strencodings.h"
+                "util/tinyformat.h"
                 "crypto/ctaes/ctaes.h"
                 "crypto/sha1.h"
                 "crypto/sha256.h"
+                "crypto/sha512.h"
+                "crypto/siphash.h"
                 "crypto/aes.h"
+                "crypto/hmac_sha256.h"
                 "crypto/common.h"
                 "compat/byteswap.h"
                 "compat/endian.h"
