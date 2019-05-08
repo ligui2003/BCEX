@@ -43,20 +43,26 @@ ENDIF(WIN32)
 add_executable(${PROJECT_NAME} "main.cpp"
                 "vo/uint256.cpp"             
                 "util/strencodings.cpp"
-                "crypto/sha1.h"
-                "crypto/sha256.h"
-                "crypto/common.h"
-                "compat/byteswap.h"
-                "compat/endian.h"
+                "crypto/sha1.cpp"
+                "crypto/sha256.cpp"
+                "crypto/ctaes/ctaes.c"
+                "crypto/aes.cpp"
                 "test/crypto_test.cpp"
-
+    
                 "config/bcex_config.h"
 
 
                 "vo/uint256.h"              
                 "util/strencodings.h"
-                "crypto/sha1.cpp"
-                "crypto/sha256.cpp"
+                "crypto/ctaes/ctaes.h"
+                "crypto/sha1.h"
+                "crypto/sha256.h"
+                "crypto/aes.h"
+                "crypto/common.h"
+                "compat/byteswap.h"
+                "compat/endian.h"
+                
+               
 
                 "../include/secp256k1/secp256k1.h"
     )
