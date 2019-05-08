@@ -35,6 +35,12 @@ ELSE(WIN32)
     else( APPLE )
       # Linux Specific Options Here
       message( STATUS "bcex on Linux" )
+      include_directories("/usr/local/include/")
+      link_directories("/usr/local/lib")
+
+      link_libraries( secp256k1
+                      gmock
+                      gtest)
 
     endif( APPLE )
 
@@ -73,16 +79,12 @@ add_executable(${PROJECT_NAME} "main.cpp"
                 "crypto/common.h"
                 "compat/byteswap.h"
                 "compat/endian.h"
-                
-               
-
-                "../include/secp256k1/secp256k1.h"
     )
 
 IF( WIN32 )
-    target_link_libraries(${PROJECT_NAME} libsecp256k1)
+    target_link_libraries(${PROJECT_NAME} libsecp256k1 gmockd gtestd)
 ELSE(WIN32)
-    target_link_libraries(${PROJECT_NAME} secp256k1)
+    target_link_libraries(${PROJECT_NAME} secp256k1 gmock gtest)
 
     if( APPLE )
 
