@@ -2,6 +2,10 @@
 
 project(bcex)
 
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_STANDARD 17)
+
+set(CMAKE_REQUIRED_FLAGS -std=c++17)
 
 include_directories(
                     ${PROJECT_SOURCE_DIR}
@@ -20,11 +24,13 @@ IF( WIN32 )
     message( STATUS "bcex on Windows" )
 
     include_directories("C:/code/include/")
-    link_directories("C:/code/libs")
+    link_directories("C:/code/libs"
+        "C:/code/libs/x64/debug")
 
-    link_libraries( libsecp256k1
-                    gmockd
-                    gtestd)
+    set(DEBUG_LIB libsecp256k1 gmockd gtestd event  ws2_32)
+    set(RELEASE_LIB libsecp256k1 gmock gtest event ws2_32)
+
+    link_libraries(${DEBUG_LIB})
 ELSE(WIN32)
     link_libraries(secp256k1)
 
@@ -51,6 +57,7 @@ add_executable(${PROJECT_NAME} "main.cpp"
                 "vo/uint256.cpp"             
                 "util/strencodings.cpp"
                 "util/url.cpp"
+                "util/bip32.cpp"
                 "crypto/sha1.cpp"
                 "crypto/sha256.cpp"
                 "crypto/sha512.cpp"
@@ -74,6 +81,9 @@ add_executable(${PROJECT_NAME} "main.cpp"
                 "util/strencodings.h"
                 "util/url.h"
                 "util/tinyformat.h"
+                "util/memory.h"
+                "util/bip32.h"
+                "util/attributes.h"
                 "crypto/ctaes/ctaes.h"
                 "crypto/sha1.h"
                 "crypto/sha256.h"
@@ -90,7 +100,7 @@ add_executable(${PROJECT_NAME} "main.cpp"
     )
 
 IF( WIN32 )
-    target_link_libraries(${PROJECT_NAME} libsecp256k1 gmockd gtestd)
+    target_link_libraries(${PROJECT_NAME} ${DEBUG_LIB})
 ELSE(WIN32)
     target_link_libraries(${PROJECT_NAME} secp256k1 gmock gtest)
 

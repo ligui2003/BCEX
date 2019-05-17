@@ -5,6 +5,8 @@
 #include "gtest/gtest.h"
 #include "gmock/gmock.h"
 
+#include "util/url.h"
+
 int main(int argc, char** argv)
 {
     ::testing::InitGoogleMock(&argc,argv);
